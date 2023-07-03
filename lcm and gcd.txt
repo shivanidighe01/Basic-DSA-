@@ -1,0 +1,22 @@
+
+class Solution {
+    static Long[] lcmAndGcd(Long A , Long B) {
+        Long sol[]=new Long[2];
+        Long a=A,b=B;
+        while(a>0&&b>0){
+            if(a>b){
+                a=a%b;
+            }
+            else{
+                b=b%a;
+            }
+        }
+        if(a==0)
+        sol[1]=b;
+        else 
+        sol[1]=a;
+        
+        sol[0]= (A*B)/sol[1];
+            return sol;
+    }
+};
