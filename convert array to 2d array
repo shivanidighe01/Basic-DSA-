@@ -1,0 +1,45 @@
+PROBLEM :-You are given an integer array nums. You need to create a 2D array from nums satisfying the following conditions:
+
+The 2D array should contain only the elements of the array nums.
+Each row in the 2D array contains distinct integers.
+The number of rows in the 2D array should be minimal.
+Return the resulting array. If there are multiple answers, return any of them.
+
+Note that the 2D array can have a different number of elements on each row.
+
+ALGORITHM:-
+
+Create an array freq of size nums.size() + 1 to store the frequency of integers in the array nums.
+
+Create an empty 2D array ans to store the answer array.
+
+Iterate over the array nums and for each integer c:
+
+a. If the frequency of the integer is greater than or equal to the current rows count in ans, then add a row to ans.
+
+b. Insert the integer c at the row freq[c].
+
+c. Increment the frequency of c in freq.
+
+Return ans.
+
+CODE:-
+
+class Solution {
+    public List<List<Integer>> findMatrix(int[] nums) {
+        int n=nums.length;
+       int[] freq=new int[n+1];
+      
+       ArrayList<List<Integer>> ans=new ArrayList<>();
+       for(int el : nums)
+       {
+           if(freq[el]>=ans.size())
+           {
+               ans.add(new ArrayList<>());
+           }
+           ans.get(freq[el]).add(el);
+            freq[el]++;
+       }
+    return ans;
+    }
+}
